@@ -1,0 +1,40 @@
+-- NOTICE: Changes take effect after load of project,
+-- or if project is already loaded, after reset()
+
+local project = {}
+
+-- Root-directory of the project:
+project.dir    = '/home/my_project'
+
+-- File extensions and folders to exclude in project.dir and subdirs
+-- This affects the functions 'find_in_project', 'quick_open_project_files'
+-- and 'goto_related_keyline':
+project.filter = {
+    extensions = {'pyc'},
+    folders    = {'/home/my_project/test'}
+}
+
+-- Run-settings: (%p is the full path of the main-file)
+project.run_main_filepath = '/home/my_project/main.py'
+textadept.run.run_commands[project.run_main_filepath] = 'python3 -u %p'
+
+-- Compile-settings:  (%p is the full path of the main-file)
+project.compile_main_filepath = '/home/my_project/makefile'
+textadept.run.compile_commands[project.compile_main_filepath] = 'make -f %p'
+
+-- Build-settings:
+textadept.run.build_commands[project.dir] = 'make'
+
+-- The pathes to projects libraries with optional filters:
+project.libraries = {
+{dir = '',
+    filter={
+        extensions={},
+        folders={}}},
+{dir = '',
+    filter={
+        extensions={},
+        folders={}}},
+}
+
+return project

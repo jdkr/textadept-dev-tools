@@ -1,0 +1,182 @@
+<h2 id="requirements">Requirements</h2>
+<p>This module is only for the gui-version and not for the terminal version. It is developed under Textadept 10.0 beta and testet on the Linux and Windows environment. Mac should also work.</p>
+<hr />
+<h2 id="installation">Installation</h2>
+<ul>
+<li>put the folder <strong><code>textadept-dev-tools</code></strong> in your <strong><code>~/.textadept/moudules</code></strong> directory</li>
+<li>put in your <strong><code>~/.textadept/init.lua</code></strong> the following line: <strong><code>require &quot;textadept-dev-tools&quot;</code></strong></li>
+</ul>
+<hr />
+<h2 id="features">Features</h2>
+<h4 id="work-with-projects">Work with projects</h4>
+<ul>
+<li>define the directory of projects sources (project-files) with respect to an optional filter</li>
+<li>define customized run-, compile- and build-commands</li>
+<li>define pathes to libraries the project depends on with respect to an optional filter. The library pathes are only used for search purpose</li>
+</ul>
+<h4 id="extended-functions">Extended functions</h4>
+<p>There are some extended functions that the user can activate/deactivate from the menu: <strong><code>Dev-Tools -&gt; Settings</code></strong>. These functions extend the default behaviour of the underlying functions and overwrite/extend their keybindings.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Keys</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>Find extended</em></td>
+<td align="left"><strong><code>(Ctrl+f ; Cmd+f)</code></strong></td>
+<td align="left">If there there is a single selection the selected text will be put into the <em>find_entry_text </em></td>
+</tr>
+<tr class="even">
+<td align="left"><em>Select Word extended</em></td>
+<td align="left"><strong><code>(Ctrl+Shift+d ; Cmd+Shift+d)</code></strong></td>
+<td align="left">Select word is extended with putting the selected word into the <em>find_entry_text</em>. This enables to directly cycle through the occurrences of the text with <em>find_next</em> and <em>find_prev</em></td>
+</tr>
+<tr class="odd">
+<td align="left"><em>Join lines extended</em></td>
+<td align="left"><strong><code>(Ctrl+Shift+j ; \^j)</code></strong></td>
+<td align="left">Join selected lines with shrinking all the whitespace in between lines to 1 space</td>
+</tr>
+<tr class="even">
+<td align="left"><em>Cut extended</em></td>
+<td align="left"><strong><code>(Ctrl+x ; Cmd+x)</code></strong></td>
+<td align="left">If nothing is selected and the user calls cut, then the current line will be cutted</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>Escape extended</em></td>
+<td align="left"><strong><code>Esc</code></strong></td>
+<td align="left">Extension of the Escape-Keybinding with <em>switch_back_from_print_buffers</em>. If <em>switch_back_from_print_buffers</em> returns false then the default keybinding takes effect</td>
+</tr>
+<tr class="even">
+<td align="left"><em>Run extended</em></td>
+<td align="left"><strong><code>(Ctrl+r ; Cmd+r)</code></strong></td>
+<td align="left">Before the command is executed the current <em>view_buffer_state</em> is stored. If there is a project loaded the project's <em>run_main_filepath</em> and <em>run_commands</em> will be respected</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>Compile extended</em></td>
+<td align="left"><strong><code>(Ctrl+Shift+r ; Cmd+Shift+r)</code></strong></td>
+<td align="left">Before the command is executed the current <em>view_buffer_state</em> is stored. If there is a project loaded the project's <em>compile_main_filepath</em> and <em>compile_commands</em> will be respected</td>
+</tr>
+<tr class="even">
+<td align="left"><em>Build extended</em></td>
+<td align="left"><strong><code>(Ctrl+Shift+b ; Cmd+Shift+b)</code></strong></td>
+<td align="left">Before the command is executed the current <em>view_buffer_state</em> is stored. If there is a project loaded the project's <em>build_commands</em> will be respected</td>
+</tr>
+</tbody>
+</table>
+<h4 id="additional-functions">Additional functions</h4>
+<p>There are additional functions that can be called from the menu or via keybindings. Most of these keybindings are a keychain that can be activated with <strong><code>Alt+d</code></strong>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Keys</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>Open Settings</em></td>
+<td align="left"><strong><code>Alt+d os</code></strong></td>
+<td align="left">Opens the settings file for controlling functions behaviour and keybindings</td>
+</tr>
+<tr class="even">
+<td align="left"><em>Rename File</em></td>
+<td align="left"><strong><code>Alt+d rf</code></strong></td>
+<td align="left">Opens a dialog to rename the filename of the current buffer. On rename the buffer will be closed and directly reopened afterwards</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>Goto Keyline</em></td>
+<td align="left"><strong><code>Ctrl+g</code></strong></td>
+<td align="left">Opens a dialog with the lines in the current buffer that are matching predefined patterns. Patterns are defined in <strong><code>keylines.lua</code></strong>. There are currently a limited number of languages supported, but additional patterns can be added easily if one knows about the syntax of the language and regular expressions</td>
+</tr>
+<tr class="even">
+<td align="left"><em>Goto Origin</em></td>
+<td align="left"><strong><code>Ctrl+Shift+g</code></strong></td>
+<td align="left">Every time a <em>Goto Keyline</em> or <em>Goto related Keyline</em> command is applied a new origin is defined. With <em>goto_origin</em> the user can go back to this point</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>Load Project</em></td>
+<td align="left"><strong><code>Alt+d lp</code></strong></td>
+<td align="left">Opens a dialog to choose one of the stored projects. After a project is loaded, it persists (even after restart) until it's unloaded</td>
+</tr>
+<tr class="even">
+<td align="left"><em>Unload project</em></td>
+<td align="left"><strong><code>Alt+d ulp</code></strong></td>
+<td align="left">Unloads the current project</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>New project</em></td>
+<td align="left"><strong><code>Alt+d np</code></strong></td>
+<td align="left">Opens a dialog to put in project's name and opens the project config-file afterwards</td>
+</tr>
+<tr class="even">
+<td align="left"><em>Configure project</em></td>
+<td align="left"><strong><code>Alt+d cp</code></strong></td>
+<td align="left">Configuration of loaded project by opening the project's configuration file</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>Quick open project</em></td>
+<td align="left"><strong><code>Alt+d qop</code></strong></td>
+<td align="left">Quick Open of defined project files</td>
+</tr>
+<tr class="even">
+<td align="left"><em>Find in Project</em></td>
+<td align="left"><strong><code>Alt+d fip</code></strong></td>
+<td align="left">Finds search text in project files and print results to [Files-Found-Buffer]. All open files are saved before and existing content in [Files-Found-Buffer] is cleared before</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>Replace in project</em></td>
+<td align="left"><strong><code>Alt+d rip</code></strong></td>
+<td align="left">Opens a dialog to input a replace text, then replaces all occurrences of <em>Find in Project</em> results. Works only if the current buffer is the [Files-Found-Buffer] and there are <em>Find in Project</em> results</td>
+</tr>
+<tr class="even">
+<td align="left"><em>Find+Replace in project</em></td>
+<td align="left"><strong><code>Alt+d frip</code></strong></td>
+<td align="left">First does <em>Find in Project</em> and directly afterwards <em>Replace in Project</em></td>
+</tr>
+<tr class="odd">
+<td align="left"><em>Find in Libraries</em></td>
+<td align="left"><strong><code>Alt+d fil</code></strong></td>
+<td align="left">Find search text in project libraries and print results to [Files-Found-Buffer]. All open files are saved before and existing content in [Files-Found-Buffer] is cleared before</td>
+</tr>
+<tr class="even">
+<td align="left"><em>Close Library-Buffers</em></td>
+<td align="left"><strong><code>Alt+d clb</code></strong></td>
+<td align="left">Closes all Buffers which filepath is defined in the project's library pathes</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>Goto related Keyline</em></td>
+<td align="left"><strong><code>f12</code></strong></td>
+<td align="left">Takes the Word under the caret and finds related keylines in defined project files. Optional: if <em>goto_lib=true</em>, then search also in the project libraries</td>
+</tr>
+</tbody>
+</table>
+<h5 id="notice">Notice:</h5>
+<p>The keybindings <strong><code>Ctrl+g</code></strong> and <strong><code>Ctrl+shift+g</code></strong> for <em>Goto Keyline</em> and <em>Goto Origin</em> are in conflict with the keybinings for <em>find_next</em> and <em>find_prev</em>. On Linux/Win there is an alternative for these functions with the keys <strong><code>F3</code></strong> and <strong><code>Shift+F3</code></strong>. On Mac the user has to find his own solution.</p>
+<h4 id="additional-settings">Additional Settings</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>prefered_view_idx</em></td>
+<td align="left">view number where the output of run-, compile- and build-commands, as well as the results of <em>find_in_project</em> and <em>find_in_libraries</em> is printed out. If set to <em>nil</em>, then the current view is used to print</td>
+</tr>
+<tr class="even">
+<td align="left"><em>goto_lib</em></td>
+<td align="left">indicates whether the function <em>Goto related Keyline</em> should take the project libraries into account</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>libs_read_only</em></td>
+<td align="left">when open a file that is contained in the project libraries, the buffer is set to <em>read_only=true</em> if this flag is set to true</td>
+</tr>
+</tbody>
+</table>
