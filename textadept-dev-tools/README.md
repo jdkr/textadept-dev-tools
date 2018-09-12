@@ -48,6 +48,7 @@ There are additional functions that can be called from the menu or via keybindin
 | *New project* | **`Alt+d np`** | Opens a dialog to put in project's name and opens the project config-file afterwards |
 | *Configure project* | **`Alt+d cp`** | Configuration of loaded project by opening the project's configuration file |
 | *Quick open project* | **`Alt+d qop`** | Quick Open of defined project files |
+| *Quick open in libraries* | **`Alt+d qol`** | Quick Open of defined library files |
 | *Find in Project* | **`Alt+d fip`** | Finds search text in project files and print results to [Files-Found-Buffer]. All open files are saved before and existing content in [Files-Found-Buffer] is cleared before |
 | *Replace in project* | **`Alt+d rip`** | Opens a dialog to input a replace text, then replaces all occurrences of *Find in Project* results. Works only if the current buffer is the [Files-Found-Buffer] and there are *Find in Project* results |
 | *Find+Replace in project* | **`Alt+d frip`** | First does *Find in Project* and directly afterwards *Replace in Project* |

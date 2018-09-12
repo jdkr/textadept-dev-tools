@@ -198,6 +198,66 @@ local get_search_text=function(title)
 end
 M.get_search_text=get_search_text
 
+--Helper for helper
+local function filter_batch(paths, filter, opts)
+  if not paths then paths = io.get_project_root() end
+  if not paths then return end
+  if type(paths) == 'string' then
+    if not filter then filter = io.quick_open_filters[paths] end
+    paths = {paths}
+  end
+  local utf8_list = {}
+  for i = 1, #paths do
+    lfs.dir_foreach(paths[i], function(filename)
+      if #utf8_list >= io.quick_open_max then return false end
+      filename = filename:gsub('^%.[/\\]', '')
+      utf8_list[#utf8_list + 1] = filename:iconv('UTF-8', _CHARSET)
+    end, filter or lfs.default_filter)
+  end
+  return utf8_list
+end
+
+--Helper
+local get_all_library_files_filtered = function(project)
+  local files = {}
+  if project.libraries==nil then return files end
+  for _,lib in ipairs(project.libraries) do
+    if lib.dir=='' then goto next_lib end
+    local batch = filter_batch(lib.dir, lib.filter)
+    for i,v in ipairs(batch) do
+      table.insert(files, v)
+    end
+    ::next_lib::
+  end
+  return files
+end
+
+local quick_open_library = function(project)
+  local utf8_list = get_all_library_files_filtered(project)
+    if #utf8_list >= io.quick_open_max then
+      local msg = string.format('%d %s %d', io.quick_open_max,
+        _L['files or more were found. Showing the first'],
+        io.quick_open_max)
+      ui.dialogs.msgbox{
+        title = _L['File Limit Exceeded'], text = msg, icon = 'gtk-dialog-info'
+      }
+      end
+      local options = {
+        title = _L['Open'], columns = _L['File'], items = utf8_list,
+        button1 = _L['_OK'], button2 = _L['_Cancel'], select_multiple = true,
+        string_output = true, width = CURSES and ui.size[1] - 2 or nil
+      }
+      if opts then for k, v in pairs(opts) do options[k] = v end end
+      local button, utf8_filenames = ui.dialogs.filteredlist(options)
+      if button ~= _L['_OK'] or not utf8_filenames then return end
+      local filenames = {}
+      for i = 1, #utf8_filenames do
+        filenames[i] = utf8_filenames[i]:iconv(_CHARSET, 'UTF-8')
+      end
+  io.open_file(filenames)
+end
+M.quick_open_library=quick_open_library
+
 -- Find search text in project libraries and print results in Files-Found-Buffer. All open files are saved before and existing content in Files-Found-Buffer is cleared before:
 local find_in_libs=function(project, search_text)
     ui.find.find_entry_text=search_text
