@@ -132,6 +132,8 @@ local init_project=function(project_filename)
         tools_project.configure_project() end
     local quick_open_project_call = function()
         io.quick_open(project.dir, project.filter) end
+    local quick_open_library_call = function()
+        tools_project.quick_open_library(project) end
     local find_in_project_call = function()
         local search_text=tools_project.get_search_text('Find in Project')
         if search_text~=nil and search_text~=''  then
@@ -177,6 +179,7 @@ local init_project=function(project_filename)
     keys['ad']['c']['p'] = config_project_call
     keys['ad']['q']['o'] = {}
     keys['ad']['q']['o']['p'] = quick_open_project_call
+    keys['ad']['q']['o']['l'] = quick_open_library_call
     keys['ad']['f'] = {}
     keys['ad']['f']['i'] = {}
     keys['ad']['f']['i']['p'] = find_in_project_call
@@ -207,6 +210,7 @@ local init_project=function(project_filename)
         {'New', tools_project.new_project},
         {'Configure', config_project_call},
         {'Quick open', quick_open_project_call},
+        {'Quick open in libraries', quick_open_library_call},
         SEPARATOR,
         {'Find in Project', find_in_project_call},
         {'Replace in Project', tools_project.replace_in_project},
