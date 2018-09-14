@@ -198,6 +198,25 @@ local get_search_text=function(title)
 end
 M.get_search_text=get_search_text
 
+local quick_open_library=function(project)
+    local lib_dirs = {}
+    local lib_refs = {}
+    for _,lib in ipairs(project.libraries) do
+      table.insert(lib_dirs, lib.dir)
+      lib_refs[_] = lib
+    end
+    local button, selection_number = ui.dialogs.filteredlist {
+        title = 'Quick open libraries',
+        columns = {'Library'},
+        items = lib_dirs
+    }
+    if button == 1 then
+        local selected_lib = lib_refs[selection_number]
+        io.quick_open(selected_lib.dir, selected_lib.filter)
+    end
+end
+M.quick_open_library=quick_open_library
+
 -- Find search text in project libraries and print results in Files-Found-Buffer. All open files are saved before and existing content in Files-Found-Buffer is cleared before:
 local find_in_libs=function(project, search_text)
     ui.find.find_entry_text=search_text
