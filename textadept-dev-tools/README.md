@@ -51,6 +51,7 @@ There are additional functions that can be called from the menu or via keybindin
 | *Find in Project* | **`Alt+d fip`** | Finds search text in project files and print results to [Files-Found-Buffer]. All open files are saved before and existing content in [Files-Found-Buffer] is cleared before |
 | *Replace in project* | **`Alt+d rip`** | Opens a dialog to input a replace text, then replaces all occurrences of *Find in Project* results. Works only if the current buffer is the [Files-Found-Buffer] and there are *Find in Project* results |
 | *Find+Replace in project* | **`Alt+d frip`** | First does *Find in Project* and directly afterwards *Replace in Project* |
+| *Quick open in Libraries* | **`Alt+d qol`** | Quick Open of defined library files |
 | *Find in Libraries* |**`Alt+d fil`** | Find search text in project libraries and print results to [Files-Found-Buffer]. All open files are saved before and existing content in [Files-Found-Buffer] is cleared before |
 | *Close Library-Buffers* |**`Alt+d clb`** | Closes all Buffers which filepath is defined in the project's library pathes |
 | *Goto related Keyline* |**`f12`** | Takes the Word under the caret and finds related keylines in defined project files. Optional: if *goto_lib=true*, then search also in the project libraries |

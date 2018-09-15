@@ -150,6 +150,8 @@ local init_project=function(project_filename)
             tools_project.find_in_libs(project, search_text)
         end
     end
+    local quick_open_libs_call = function()
+        tools_project.quick_open_libs(project) end
     local close_lib_buffers_call = function()
         tools_project.close_lib_buffers(lib_filepaths)
     end
@@ -177,6 +179,7 @@ local init_project=function(project_filename)
     keys['ad']['c']['p'] = config_project_call
     keys['ad']['q']['o'] = {}
     keys['ad']['q']['o']['p'] = quick_open_project_call
+    keys['ad']['q']['o']['l'] = quick_open_libs_call
     keys['ad']['f'] = {}
     keys['ad']['f']['i'] = {}
     keys['ad']['f']['i']['p'] = find_in_project_call
@@ -213,6 +216,7 @@ local init_project=function(project_filename)
         {'Find+Replace in Project', find_replace_in_project_call},
         SEPARATOR,
         {'Find in Libraries', find_in_libs_call},
+        {'Quick open in Libraries', quick_open_libs_call},
         {'Close Library Buffers', close_lib_buffers_call},
         SEPARATOR,
         {'Goto related Keyline', goto_related_keyline_call},

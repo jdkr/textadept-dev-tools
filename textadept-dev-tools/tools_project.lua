@@ -217,6 +217,25 @@ local find_in_libs=function(project, search_text)
 end
 M.find_in_libs=find_in_libs
 
+local quick_open_libs=function(project)
+    local lib_dirs = {}
+    local lib_refs = {}
+    for _,lib in ipairs(project.libraries) do
+        table.insert(lib_dirs, lib.dir)
+        lib_refs[_] = lib
+    end
+    local button, selection_number = ui.dialogs.filteredlist {
+        title = 'Quick open libraries',
+        columns = {'Library'},
+        items = lib_dirs
+    }
+    if button == 1 then
+        local selected_lib = lib_refs[selection_number]
+        io.quick_open(selected_lib.dir, selected_lib.filter)
+    end
+end
+M.quick_open_libs=quick_open_libs
+
 -- Closes all Buffers which filepath is defined in the project's library-pathes
 local close_lib_buffers=function(lib_filepaths)
     for _,buff in ipairs(_BUFFERS) do
@@ -227,7 +246,6 @@ local close_lib_buffers=function(lib_filepaths)
     end
 end
 M.close_lib_buffers=close_lib_buffers
-
 
 -- getting all lib-filepaths
 local get_lib_filepaths=function(project)
@@ -353,7 +371,5 @@ local goto_related_keyline=function(project, goto_lib)
     end
 end
 M.goto_related_keyline=goto_related_keyline
-
-
 
 return M
