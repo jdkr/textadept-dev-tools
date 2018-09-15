@@ -216,7 +216,7 @@ local init_project=function(project_filename)
         {'Find+Replace in Project', find_replace_in_project_call},
         SEPARATOR,
         {'Find in Libraries', find_in_libs_call},
-	{'Quick open in Libraries', quick_open_libs_call},
+        {'Quick open in Libraries', quick_open_libs_call},
         {'Close Library Buffers', close_lib_buffers_call},
         SEPARATOR,
         {'Goto related Keyline', goto_related_keyline_call},
