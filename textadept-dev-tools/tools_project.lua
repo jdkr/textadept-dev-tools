@@ -99,6 +99,7 @@ M.configure_project=configure_project
 -- Run project with respect to the project's run_main_filepath and run_commands
 local run_project=function(project)
     io.save_all_files()
+    textadept.run.stop() -- stops currently running process
     textadept.run.run(project.run_main_filepath)
 end
 M.run_project=run_project
@@ -106,6 +107,7 @@ M.run_project=run_project
 -- Compile project with respect to the project's compile_main_filepath and compile_commands
 local compile_project=function(project)
     io.save_all_files()
+    textadept.run.stop() -- stops currently running process
     textadept.run.compile(project.compile_main_filepath)
 end
 M.compile_project=compile_project
@@ -113,6 +115,7 @@ M.compile_project=compile_project
 -- Build project with respect to the project's build_commands
 local build_project=function(project)
     io.save_all_files()
+    textadept.run.stop() -- stops currently running process
     textadept.run.build(project.dir)
 end
 M.build_project=build_project
