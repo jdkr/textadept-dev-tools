@@ -18,6 +18,9 @@ function keylines.get_patterns_for_attribute(name)
                 ..name..'\\(.+\\)',
             '^\\s*(struct|union|enum|extern|typedef).*'..name..'.*;',
             '^\\s*#define\\s+.*'..name..'.*\\)'},
+        ['hs']={
+            '^\\s*'..name..'\\s+(::).*',
+            '^\\s*(data|type|newtype|instance)\\s+.*'..name..'.*'},
         ['lua']={
             '^\\s*(local|)\\s*function\\s+\\S*'..name..'\\s*\\(.*\\)',
             '^\\s*(local|)\\s*'..name..'\\s*=\\s*function\\s*\\(.*\\)'}}
