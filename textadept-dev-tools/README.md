@@ -1,12 +1,12 @@
 ## Requirements
 
-This module is only for the gui-version and not for the terminal version. It is developed under Textadept 10.0 beta and testet on the Linux and Windows environment. Mac should also work.
+This module is only for the gui-version and not for the terminal version. It is testet on the Linux and Windows environment. Mac should also work.
 
 ---
 
 ## Installation
 
-- put the folder **`textadept-dev-tools`** in your **`~/.textadept/moudules`** directory
+- put the folder **`textadept-dev-tools`** in your **`~/.textadept/moudules`** directory. If you want to overwrite the folder of a previous version, make sure to save your existing projects before.
 - put in your **`~/.textadept/init.lua`** the following line: **`require "textadept-dev-tools"`**
 
 ---
