@@ -15,7 +15,7 @@ M.goto_lib=false
 -- the buffer is set to read_only if this flag is set to true:
 M.libs_read_only=true
 
--- Whether or not to activate custumized keybindings.
+-- Whether or not to activate customized keybindings.
 -- If true default keybindings are overwritten:
 M.select_word_extended_keybinding = true
 M.join_lines_extended_keybinding = true
