@@ -6,10 +6,10 @@ local nav = require "textadept-dev-tools.navigation"
 
 -- Initialize local variables for navigation.
 -- view_buffer_state is used to control the prints from run- und build commands and the print from Findings. It stores 3 type of information:
--- 1. the preferred_view where the printings should take place
+-- 1. the preferred_view_idx where the printings should take place
 -- 2. the focus_view that had focus before printing
 -- 3. for every view before print it saves the current_buffer of the view (but only if it's no printing-buffer)
-local view_buffer_state={preferred_view = _VIEWS[settings.preferred_view_idx]}
+local view_buffer_state={preferred_view_idx = settings.preferred_view_idx}
 -- origin saves the buffer and position before a goto_keyline or goto_related_keyline is called:
 local origin={buffer = buffer, pos = buffer.current_pos}
 
