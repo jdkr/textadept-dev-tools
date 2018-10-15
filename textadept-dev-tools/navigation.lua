@@ -48,7 +48,7 @@ local prepare_print=function(view_buffer_state)
         end
     end
     --switch to preferred_view where print-out should take place
-    local preferred_view=view_buffer_state.preferred_view
+    local preferred_view=_VIEWS[view_buffer_state.preferred_view_idx]
     if preferred_view~=nil then ui.goto_view(preferred_view) end
 
     -- return modified view_buffer_state
