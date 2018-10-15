@@ -6,7 +6,7 @@ This module is only for the gui-version and not for the terminal version. It is 
 
 ## Installation
 
-- rename the downloaded package-folder in **`textadept-dev-tools`** and put it into your **`~/.textadept/moudules`** directory. If you want to overwrite the folder of a previous version, make sure to save your existing projects before.
+- rename the downloaded package-folder in **`textadept-dev-tools`** and put it into your **`~/.textadept/modules`** directory. If you want to overwrite the folder of a previous version, make sure to save your existing projects before.
 - put in your **`~/.textadept/init.lua`** the following line: **`require "textadept-dev-tools"`**
 
 ---
