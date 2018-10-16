@@ -27,7 +27,6 @@ There are some extended functions that the user can activate/deactivate from the
 | *Select Word extended* | **`(Ctrl+Shift+d ; Cmd+Shift+d)`** | Select word is extended with putting the selected word into the *find_entry_text*. This enables to directly cycle through the occurrences of the text with *find_next* and *find_prev* |
 | *Join lines extended* | **`(Ctrl+Shift+j ; \^j)`** | Join selected lines with shrinking all the whitespace in between lines to 1 space |
 | *Cut extended* | **`(Ctrl+x ; Cmd+x)`** | If nothing is selected and the user calls cut, then the current line will be cutted |
-| *Escape extended* | **`Esc`** | Extension of the Escape-Keybinding with *switch_back_from_print_buffers*. If *switch_back_from_print_buffers* returns false then the default keybinding takes effect |
 | *Run extended* | **`(Ctrl+r ; Cmd+r)`** | Before the command is executed the current *view_buffer_state* is stored. If there is a project loaded the project's *run_main_filepath* and *run_commands* will be respected |
 | *Compile extended* | **`(Ctrl+Shift+r ; Cmd+Shift+r)`** | Before the command is executed the current *view_buffer_state* is stored. If there is a project loaded the project's *compile_main_filepath* and *compile_commands* will be respected |
 | *Build extended* | **`(Ctrl+Shift+b ; Cmd+Shift+b)`** | Before the command is executed the current *view_buffer_state* is stored. If there is a project loaded the project's *build_commands* will be respected |
@@ -43,6 +42,7 @@ There are additional functions that can be called from the menu or via keybindin
 | *Rename File* | **`Alt+d rf`** | Opens a dialog to rename the filename of the current buffer. On rename the buffer will be closed and directly reopened afterwards |
 | *Goto Keyline* | **`Ctrl+g`** | Opens a dialog with the lines in the current buffer that are matching predefined patterns. Patterns are defined in **`keylines.lua`**. There are currently a limited number of languages supported, but additional patterns can be added easily if one knows about the syntax of the language and regular expressions |
 | *Goto Origin* |**`Ctrl+Shift+g`** | Every time a *Goto Keyline* or *Goto related Keyline* command is applied a new origin is defined. With *goto_origin* the user can go back to this point |
+| *Switch Print Buffers* | **`(Ctrl+Alt+Enter ; Cmd+Alt+Enter)`** | For all Views, if the current Buffer is a Print-Buffer (i.e. Find_in_Files_Buffer, Message_Buffer), then switch to the previous Buffer that wasn't a Print-Buffer |
 | *Load Project* | **`Alt+d lp`** | Opens a dialog to choose one of the stored projects. After a project is loaded, it persists (even after restart) until it's unloaded |
 | *Unload project* | **`Alt+d ulp`** | Unloads the current project |
 | *New project* | **`Alt+d np`** | Opens a dialog to put in project's name and opens the project config-file afterwards |
