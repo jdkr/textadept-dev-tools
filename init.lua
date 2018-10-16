@@ -38,6 +38,14 @@ if settings.goto_origin_keybinding == true then
     keys[not OSX and GUI and 'cG' or 'mG']= goto_origin_call
 end
 
+-- For all Views, if the current Buffer is a Print-Buffer (i.e. Find_in_Files_Buffer, Message_Buffer), then switch to the previous Buffer that wasn't a Print-Buffer.
+local switch_print_buffers_call = function()
+    return nav.switch_print_buffers(view_buffer_state)
+end
+if settings.switch_print_buffers_keybinding==true then
+    keys['ca\n'] = switch_print_buffers_call
+end
+
 -- Extension of Run- Compile- and Build-commands with detection of view_buffer_state:
 local run_extended_call = function()
     view_buffer_state=nav.prepare_print(view_buffer_state)
@@ -63,14 +71,6 @@ if settings.build_extended_keybinding == true then
     keys[not OSX and (GUI and 'cB' or 'cmb') or 'mB'] = build_extended_call
 end
 
--- Extension of the Escape-Keybinding with switching back from Print-Buffers. If switch_back_from_print_buffers returns false then the default keybinding takes effect:
-local switch_back = function()
-    return nav.switch_back_from_print_buffers(view_buffer_state)
-end
-if settings.escape_extended_keybinding==true then
-    keys['esc'] = switch_back or keys['esc']
-end
-
 -- key-sequences (accessible via alt+d):
 keys['ad'] = {}
 keys['ad']['o'] = {}
@@ -91,6 +91,7 @@ local dev_tools_menu = {
     {'Rename File', tools.rename_file},
     {'Goto Keyline', goto_keyline_call},
     {'Goto Origin', goto_origin_call},
+    {'Switch Print Buffers', switch_print_buffers_call},
     {'Find extended', tools.find_extended},
     {'Select Word extended', tools.select_word_extended},
     {'Join Lines extended', tools.join_lines_extended},
@@ -230,7 +231,6 @@ local init_project=function(project_filename)
     dev_tools_menu[#dev_tools_menu]=nil
     dev_tools_menu[#dev_tools_menu]=nil
 end
-
 
 -- initialization of current_project. If there is an error, show a dialog:
 local project_filename=tools_project.get_current_project()
