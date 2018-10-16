@@ -44,7 +44,7 @@ There are additional functions that can be called from the menu or via keybindin
 | *Goto Origin* |**`Ctrl+Shift+g`** | Every time a *Goto Keyline* or *Goto related Keyline* command is applied a new origin is defined. With *goto_origin* the user can go back to this point |
 | *Switch Print Buffers* | **`(Ctrl+Alt+Enter ; Cmd+Alt+Enter)`** | For all Views, if the current Buffer is a Print-Buffer (i.e. Find_in_Files_Buffer, Message_Buffer), then switch to the previous Buffer that wasn't a Print-Buffer |
 | *Load Project* | **`Alt+d lp`** | Opens a dialog to choose one of the stored projects. After a project is loaded, it persists (even after restart) until it's unloaded |
-| *Unload project* | **`Alt+d ulp`** | Unloads the current project |
+| *Unload project* | **`Alt+d up`** | Unloads the current project |
 | *New project* | **`Alt+d np`** | Opens a dialog to put in project's name and opens the project config-file afterwards |
 | *Configure project* | **`Alt+d cp`** | Configuration of loaded project by opening the project's configuration file |
 | *Quick open project* | **`Alt+d qop`** | Quick Open of defined project files |
