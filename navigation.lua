@@ -9,8 +9,8 @@ local is_print_buffer=function(buf)
 end
 M.is_print_buffer=is_print_buffer
 
--- Switching back inside a view from a print-buffer to the last previous buffer which was not a print-buffer. Function returns a boolean if there was a switch:
-local switch_back_from_print_buffers = function(view_buffer_state)
+-- For all Views, if the current Buffer is a Print-Buffer (i.e. Find_in_Files_Buffer, Message_Buffer), then switch to the previous Buffer that wasn't a Print-Buffer.
+local switch_print_buffers = function(view_buffer_state)
     local switched=false
     local switch_back_buffer=nil
     -- TODO (Maybe): switch only back if inside print-buffer
@@ -31,7 +31,7 @@ local switch_back_from_print_buffers = function(view_buffer_state)
     end
     return switched
 end
-M.switch_back_from_print_buffers=switch_back_from_print_buffers
+M.switch_print_buffers=switch_print_buffers
 
 -- Updates the view_buffer_state, with current_state:
 local prepare_print=function(view_buffer_state)
