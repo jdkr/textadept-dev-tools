@@ -41,9 +41,9 @@ local prepare_print=function(view_buffer_state)
     local focus=nil
     for i=1,#_VIEWS do
         buffer_in_view=_VIEWS[i].buffer
-        focus = buffer_in_view==buffer
         if not is_print_buffer(buffer_in_view) then
             view_buffer_state[_VIEWS[i]]=buffer_in_view
+            focus = _VIEWS[i] == view
             if focus then view_buffer_state.focus_view=_VIEWS[i] end
         end
     end
