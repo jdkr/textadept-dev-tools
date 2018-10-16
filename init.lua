@@ -38,7 +38,6 @@ if settings.goto_origin_keybinding == true then
     keys[not OSX and GUI and 'cG' or 'mG']= goto_origin_call
 end
 
--- For all Views, if the current Buffer is a Print-Buffer (i.e. Find_in_Files_Buffer, Message_Buffer), then switch to the previous Buffer that wasn't a Print-Buffer.
 local switch_print_buffers_call = function()
     return nav.switch_print_buffers(view_buffer_state)
 end
