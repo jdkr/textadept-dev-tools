@@ -23,9 +23,9 @@ M.find_extended_keybinding = true
 M.cut_extended_keybinding = true
 M.goto_keyline_keybinding = true
 M.goto_origin_keybinding = true
+M.switch_print_buffers_keybinding = true
 M.run_extended_keybinding = true
 M.compile_extended_keybinding = true
 M.build_extended_keybinding = true
-M.escape_extended_keybinding = true
 
 return M
