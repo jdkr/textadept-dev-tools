@@ -29,7 +29,6 @@ local switch_back_from_print_buffers = function(view_buffer_state)
     if switched==true then
         if view_buffer_state.focus_view then ui.goto_view(view_buffer_state.focus_view) end
     end
-    -- return boolean for or operator in extension of 'esc'-keybinding:
     return switched
 end
 M.switch_back_from_print_buffers=switch_back_from_print_buffers
