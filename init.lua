@@ -140,8 +140,11 @@ local init_project=function(project_filename)
         end
     end
     local find_replace_in_project_call = function()
-        view_buffer_state=nav.prepare_print(view_buffer_state)
-        tools_project.find_replace_in_project(project)
+        local search_text=tools_project.get_search_text('Find+Replace in Project')
+        if search_text~=nil and search_text~=''  then
+            view_buffer_state=nav.prepare_print(view_buffer_state)
+            tools_project.find_replace_in_project(project, search_text)
+        end
     end
     local find_in_libs_call = function()
         local search_text=tools_project.get_search_text('Find in Libraries')
