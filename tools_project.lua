@@ -29,7 +29,6 @@ M.CURRENT_PROJECT_FILEPATH=CURRENT_PROJECT_FILEPATH
 local FOUND_PROJECT_IDENTIFIER='FOUND_IN_PROJECT'
 local FOUND_LIBS_IDENTIFIER='FOUND_IN_LIBS'
 
-
 -- Helper-function
 local get_current_project=function()
     local file = io.open(CURRENT_PROJECT_FILEPATH, 'r')
@@ -94,7 +93,6 @@ local configure_project=function()
     io.open_file(project_filepath)
 end
 M.configure_project=configure_project
-
 
 -- Run project with respect to the project's run_main_filepath and run_commands
 local run_project=function(project)
@@ -176,8 +174,8 @@ end
 M.replace_in_project=replace_in_project
 
 -- First does 'Find in Project' and directly afterwards 'Replace in Project':
-local find_replace_in_project=function(project)
-    find_in_project(project)
+local find_replace_in_project=function(project, search_text)
+    find_in_project(project, search_text)
     replace_in_project()
 end
 M.find_replace_in_project=find_replace_in_project
