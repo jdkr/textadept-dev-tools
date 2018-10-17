@@ -119,7 +119,7 @@ end
 M.build_project=build_project
 
 -- Finds search text in project files and print results in Files-Found-Buffer. All open files are saved before and existing content in Files-Found-Buffer is cleared before:
--- TODO: For better performance it would be nice to have some kind of function 'find_pattern_in_text'. This function should accept any Regex-pattern and could be used for find_in_project, find_in_libs, goto_keyline and goto_related_keyline. Also it should be independent of a buffer. Currently used find_in_files use a temporary buffer that shows up every time the time-check is done.
+-- TODO: For better performance it would be nice to have some kind of function 'find_pattern_in_text'. This function should accept any Regex-pattern and could be used for find_in_project, find_in_libs, goto_keyline and goto_related_keyline. Also it should be independent of a buffer. Currently 'find_in_files' uses a temporary buffer that shows up every time the time-check is done.
 -- TODO: It would be nice if one could set the buffers tab_label persistently, or have some other kind of labeling a buffer. Currently in find_in_project and find_in_libs there are identifier used that are printed as a footer, but they can be edited by the user.
 local find_in_project=function(project, search_text)
     ui.find.find_entry_text=search_text
